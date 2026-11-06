@@ -1,0 +1,51 @@
+# Production image for ValleyNote (built on VPS or CI)
+FROM node:22-bookworm-slim AS deps
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+
+FROM deps AS migrate
+WORKDIR /app
+COPY prisma ./prisma
+COPY prisma.config.ts ./
+CMD ["npx", "prisma", "migrate", "deploy"]
+
+FROM node:22-bookworm-slim AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+ENV NEXT_TELEMETRY_DISABLED=1
+ARG NEXT_PUBLIC_APP_URL=https://valleynote.com
+ARG NEXT_PUBLIC_WHOP_PLAN_BASIC_MONTHLY
+ARG NEXT_PUBLIC_WHOP_PLAN_BASIC_YEARLY
+ARG NEXT_PUBLIC_WHOP_PLAN_PLUS_MONTHLY
+ARG NEXT_PUBLIC_WHOP_PLAN_PLUS_YEARLY
+ARG NEXT_PUBLIC_WHOP_PLAN_PRO_MONTHLY
+ARG NEXT_PUBLIC_WHOP_PLAN_PRO_YEARLY
+ENV NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
+ENV NEXT_PUBLIC_WHOP_PLAN_BASIC_MONTHLY=$NEXT_PUBLIC_WHOP_PLAN_BASIC_MONTHLY
+ENV NEXT_PUBLIC_WHOP_PLAN_BASIC_YEARLY=$NEXT_PUBLIC_WHOP_PLAN_BASIC_YEARLY
+ENV NEXT_PUBLIC_WHOP_PLAN_PLUS_MONTHLY=$NEXT_PUBLIC_WHOP_PLAN_PLUS_MONTHLY
+ENV NEXT_PUBLIC_WHOP_PLAN_PLUS_YEARLY=$NEXT_PUBLIC_WHOP_PLAN_PLUS_YEARLY
+ENV NEXT_PUBLIC_WHOP_PLAN_PRO_MONTHLY=$NEXT_PUBLIC_WHOP_PLAN_PRO_MONTHLY
+ENV NEXT_PUBLIC_WHOP_PLAN_PRO_YEARLY=$NEXT_PUBLIC_WHOP_PLAN_PRO_YEARLY
+RUN npx prisma generate && npm run build
+
+FROM node:22-bookworm-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN groupadd --system --gid 1001 nodejs && useradd --system --uid 1001 nextjs \
+  && apt-get update && apt-get install -y --no-install-recommends ca-certificates \
+  && rm -rf /var/lib/apt/lists/*
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/src/generated ./src/generated
+RUN mkdir -p /app/public/uploads/avatars /app/public/uploads/notes \
+  && chown -R nextjs:nodejs /app
+USER nextjs
+EXPOSE 3000
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+CMD ["node", "server.js"]

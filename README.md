@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ValleyNote
 
-## Getting Started
+AI-powered notebook SaaS by **Moonlight Valley LLC** (`valleynote.com`).
 
-First, run the development server:
+Built from the ValleyNote Technical Brief on top of the Botwise landing design system (colors, fonts, layout, assets). Landing copy is ValleyNote; image assets stay as placeholders until brand art is provided.
+
+## Stack
+
+- Next.js 16 (App Router) + TypeScript
+- PostgreSQL 16 + pgvector
+- Redis
+- Better Auth (email/password)
+- Prisma 7
+- Tailwind CSS (Botwise tokens)
+
+## Local setup
 
 ```bash
+npm install
+cp .env.example .env   # if needed
+npm run db:up          # Postgres :5433, Redis :6380
+npm run db:migrate
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Useful scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script | Purpose |
+|--------|---------|
+| `npm run db:up` | Start Postgres + Redis via Docker Compose |
+| `npm run db:migrate` | Apply Prisma migrations |
+| `npm run db:studio` | Prisma Studio |
+| `npm run build` | Generate client + production build |
 
-## Learn More
+## Milestone status
 
-To learn more about Next.js, take a look at the following resources:
+1. **Setup** — Docker, DB, auth, settings shell, landing copy ✅
+2. **Notebook core** — editor, notebooks, tags, search, images, video embeds, voice notes ✅
+3. **AI v1** — writing assistant, summarize, quotas, auto-title/tag/tasks ✅
+4. **RAG** — embeddings on save, hybrid Ask my notes, persisted chat ✅
+5. Billing — Whop embedded checkout + plan limits UI
+6. Polish — sharing, export, admin
+7. Hardening — backups, tests, production deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### AI extras
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run ai:reindex   # backfill note embeddings (needs OPENROUTER_API_KEY or OPENAI_API_KEY)
+```
 
-## Deploy on Vercel
+Set `AI_TRANSCRIPTION_MODEL` (default `openai/whisper-1`) for voice notes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design rules
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Keep Botwise layout / colors / fonts / animations.
+- Change landing **text** only; leave image assets until replacements are provided.
+- Hide fake stats and testimonials until real data exists.
