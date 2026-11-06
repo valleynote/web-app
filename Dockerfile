@@ -33,6 +33,11 @@ ENV NEXT_PUBLIC_WHOP_PLAN_PLUS_MONTHLY=$NEXT_PUBLIC_WHOP_PLAN_PLUS_MONTHLY
 ENV NEXT_PUBLIC_WHOP_PLAN_PLUS_YEARLY=$NEXT_PUBLIC_WHOP_PLAN_PLUS_YEARLY
 ENV NEXT_PUBLIC_WHOP_PLAN_PRO_MONTHLY=$NEXT_PUBLIC_WHOP_PLAN_PRO_MONTHLY
 ENV NEXT_PUBLIC_WHOP_PLAN_PRO_YEARLY=$NEXT_PUBLIC_WHOP_PLAN_PRO_YEARLY
+# Dummy values so Next can collect page data at build time (runtime uses real env)
+ENV DATABASE_URL="postgresql://build:build@127.0.0.1:5432/build?schema=public"
+ENV BETTER_AUTH_SECRET="build-time-secret-not-used-at-runtime-32chars"
+ENV BETTER_AUTH_URL="https://valleynote.com"
+ENV REDIS_URL="redis://127.0.0.1:6379"
 RUN npx prisma generate && npm run build
 
 FROM node:22-bookworm-slim AS runner
