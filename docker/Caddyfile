@@ -14,7 +14,7 @@ valleynote.com, www.valleynote.com {
 	@fonts path /fonts/*
 	header @fonts Cache-Control "public, max-age=31536000, immutable"
 
-	@media path /botwise/* /marketing/*
+	@media path /media/* /marketing/*
 	header @media Cache-Control "public, max-age=2592000, immutable"
 
 	@nextimage path /_next/image*

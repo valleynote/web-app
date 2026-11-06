@@ -7,7 +7,7 @@ import { assets } from "@/lib/assets";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
-/** Same length/pattern as Botwise: short value + ~15–23 char label */
+/** Short value + concise label for floating CTA stats. */
 const stats = [
   {
     value: "Ask",
@@ -225,7 +225,7 @@ export default function CTA() {
             />
           </div>
 
-          {/* —— Without Borders (Botwise: transparent, no white card) —— */}
+          {/* Without Borders — transparent stage, no white card */}
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -263,7 +263,7 @@ export default function CTA() {
                 ))}
               </div>
 
-              {/* Center copy — Botwise proportions */}
+              {/* Center copy */}
               <div className="relative z-10 flex min-h-[380px] flex-col items-center justify-center px-4 py-12 text-center sm:min-h-[460px] sm:px-5 sm:py-16 md:min-h-[502px] md:py-20">
                 <h2 className="max-w-[520px] font-switzer text-[28px] font-semibold leading-[1.12] tracking-[-0.03em] text-ink-soft sm:text-[40px] sm:leading-[1.1] md:text-[48px]">
                   Your Notes

@@ -1,4 +1,4 @@
-/** Exact Botwise UI chrome icons (Framer uses inline SVGs for these). */
+/** Inline SVG chrome icons used across marketing UI. */
 
 type IconProps = {
   className?: string;

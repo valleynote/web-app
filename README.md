@@ -2,7 +2,7 @@
 
 AI-powered notebook SaaS by **Moonlight Valley LLC** (`valleynote.com`).
 
-Built from the ValleyNote Technical Brief on top of the Botwise landing design system (colors, fonts, layout, assets). Landing copy is ValleyNote; image assets stay as placeholders until brand art is provided.
+AI notebook for writers and teams. Landing and product UI use ValleyNote branding, typography, and media assets.
 
 ## Stack
 
@@ -11,7 +11,7 @@ Built from the ValleyNote Technical Brief on top of the Botwise landing design s
 - Redis
 - Better Auth (email/password)
 - Prisma 7
-- Tailwind CSS (Botwise tokens)
+- Tailwind CSS
 
 ## Local setup
 
@@ -54,6 +54,6 @@ Set `AI_TRANSCRIPTION_MODEL` (default `openai/whisper-1`) for voice notes.
 
 ## Design rules
 
-- Keep Botwise layout / colors / fonts / animations.
-- Change landing **text** only; leave image assets until replacements are provided.
+- Preserve ValleyNote layout, colors, fonts, and motion.
+- Prefer semantic asset names under `public/media`.
 - Hide fake stats and testimonials until real data exists.

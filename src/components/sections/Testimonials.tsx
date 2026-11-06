@@ -153,7 +153,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Full-bleed oval stage — mirrors Botwise Framer layout */}
+      {/* Full-bleed oval stage */}
       <div className="relative mt-8 w-full overflow-x-clip border-y border-dashed border-bg-border sm:mt-10 md:mt-14">
         <div className="relative mx-auto h-[340px] w-full max-w-[1140px] border-x border-bg-border bg-bg-soft sm:h-[369px]">
           {/* Purple edge glows — under cards */}

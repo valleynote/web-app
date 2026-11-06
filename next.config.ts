@@ -39,11 +39,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "framerusercontent.com",
-        pathname: "/images/**",
-      },
-      {
-        protocol: "https",
         hostname: "api.dicebear.com",
         pathname: "/**",
       },
@@ -64,7 +59,7 @@ const nextConfig: NextConfig = {
         headers: longCache,
       },
       {
-        source: "/botwise/:path*",
+        source: "/media/:path*",
         headers: [
           {
             key: "Cache-Control",
