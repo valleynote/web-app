@@ -1,14 +1,16 @@
+import dynamic from "next/dynamic";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import AskAI from "@/components/sections/AskAI";
-import ContextEngine from "@/components/sections/ContextEngine";
-import CTA from "@/components/sections/CTA";
-import FAQ from "@/components/sections/FAQ";
-import Features from "@/components/sections/Features";
-import FinalCTA from "@/components/sections/FinalCTA";
 import Hero from "@/components/sections/Hero";
-import Pricing from "@/components/sections/Pricing";
-import Testimonials from "@/components/sections/Testimonials";
+
+const Features = dynamic(() => import("@/components/sections/Features"));
+const AskAI = dynamic(() => import("@/components/sections/AskAI"));
+const ContextEngine = dynamic(() => import("@/components/sections/ContextEngine"));
+const Pricing = dynamic(() => import("@/components/sections/Pricing"));
+const CTA = dynamic(() => import("@/components/sections/CTA"));
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
+const FAQ = dynamic(() => import("@/components/sections/FAQ"));
+const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"));
 
 export default function Home() {
   return (

@@ -15,6 +15,7 @@ public/uploads/avatars/**
 !public/uploads/avatars/.gitkeep
 public/uploads/notes/**
 !public/uploads/notes/.gitkeep
+public/botwise-site
 .agents
 .claude
 .windsurf

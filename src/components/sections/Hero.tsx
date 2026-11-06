@@ -185,7 +185,8 @@ export default function Hero() {
               fill
               className="pointer-events-none object-cover object-center"
               priority
-              sizes="(max-width: 1140px) 100vw, 1140px"
+              quality={75}
+              sizes="(max-width: 768px) 100vw, 1140px"
             />
 
             <div className="relative z-10 flex flex-col items-center px-4 pb-7 pt-10 text-center sm:px-5 sm:pb-8 sm:pt-12 md:min-h-[704px] md:px-10 md:pb-10 md:pt-[72px]">
