@@ -56,6 +56,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# local visual regression captures for fingerprint cleanup
+/.fingerprint-audit/
+
 /src/generated/prisma
 
 # user uploads

@@ -23,7 +23,7 @@ export const assets = {
   abstractOrb: img("abstract-orb.png"),
   abstractShape: img("abstract-shape.png"),
   stickyNoteCard: img("sticky-note.png"),
-  jennyCard: img("jenny-card.png"),
+  activityCard: img("activity-card.png"),
   railLeft: img("rail-left.png"),
   railRight: img("rail-right.png"),
   plusCircle: img("plus-circle.png"),
@@ -54,8 +54,8 @@ export const assets = {
   cxPhoto: img("cx-photo.png"),
   clip: img("clip.png"),
   numbersBg: img("numbers-bg.png"),
-  botIcon: img("bot-icon.png"),
-  botWordmark: img("bot-wordmark.png"),
+  doodleArrow: img("doodle-arrow.png"),
+  pillMark: img("pill-mark.png"),
 
   systemLeft: img("system-left.png"),
   systemRight: img("system-right.png"),
@@ -240,6 +240,6 @@ export const assets = {
   footerPattern: img("footer-pattern.png"),
   footerLine: img("abstract-line.png"),
 
-  creator: img("creator.png"),
-  sandy: img("sandy.png"),
+  portraitAvatar: img("portrait-avatar.png"),
+  glowSideAccents: img("glow-side-accents.png"),
 };

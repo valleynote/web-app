@@ -45,7 +45,7 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
-    // Force HTML revalidation so LLM/fetch caches cannot keep stale template fingerprints.
+    // Force HTML revalidation so crawlers and CDN edges cannot keep stale document HTML.
     const htmlCache = [
       {
         key: "Cache-Control",
