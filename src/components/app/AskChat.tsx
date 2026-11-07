@@ -774,7 +774,7 @@ export default function AskChat() {
             <div className="flex w-full flex-col items-center px-4 pb-8 pt-2 md:px-8">
               <div className="flex w-full max-w-[640px] flex-col items-center">
                 <h1 className="ask-hero-enter font-inter-tight text-[28px] font-semibold tracking-[-0.04em] text-ink md:text-[34px]">
-                  What do you want from your notes?
+                  How can I help you today?
                 </h1>
                 <p className="ask-hero-enter mt-2 max-w-md text-center font-switzer text-[14.5px] text-muted">
                   Ask, create, edit, or organize across your notebooks.

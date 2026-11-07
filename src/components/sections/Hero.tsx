@@ -195,10 +195,13 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.15, ease: easeOut }}
-                className="mb-4 inline-flex max-w-full items-center gap-2 rounded-md border border-white/25 bg-black/25 px-3 py-1.5 backdrop-blur-[2px] sm:mb-5"
+                className="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-white/25 bg-black/20 px-3 py-1.5 backdrop-blur-[2px] sm:mb-5"
               >
                 <span className="truncate font-inter-tight text-[13px] font-medium text-white sm:text-[14px]">
-                  Notebook with grounded AI
+                  AI-powered notebook
+                </span>
+                <span className="shrink-0 rounded-full bg-[#62ff2e] px-2 py-[2px] font-inter-tight text-[11px] font-medium text-[#1a1a1a] sm:text-[12px]">
+                  New
                 </span>
               </motion.a>
 
@@ -273,22 +276,24 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="mt-5 flex w-full max-w-[720px] flex-wrap items-center justify-center gap-2 sm:mt-6 md:mt-8"
+                className="mt-5 w-full max-w-[821px] overflow-hidden sm:mt-6 md:mt-8"
               >
-                {chips.slice(0, 6).map((chip) => (
-                  <button
-                    key={chip.label}
-                    type="button"
-                    onClick={() => {
-                      setQuery(chip.prompt);
-                      goSignup(chip.prompt);
-                    }}
-                    className="inline-flex items-center gap-1.5 rounded-md bg-white/95 px-3 py-[6px] font-inter-tight text-[13px] font-medium text-[#1a1a1a] shadow-sm transition hover:bg-[#62ff2e] sm:px-3.5 sm:text-[14px]"
-                  >
-                    <IconPlus size={12} className="text-[#1a1a1a]" />
-                    {chip.label}
-                  </button>
-                ))}
+                <div className="marquee gap-2">
+                  {[...chips, ...chips, ...chips].map((chip, i) => (
+                    <button
+                      key={`${chip.label}-${i}`}
+                      type="button"
+                      onClick={() => {
+                        setQuery(chip.prompt);
+                        goSignup(chip.prompt);
+                      }}
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-3 py-[5px] font-inter-tight text-[13px] font-medium text-[#1a1a1a] shadow-sm transition hover:bg-[#62ff2e] sm:px-3.5 sm:text-[14px]"
+                    >
+                      <IconPlus size={12} className="text-[#1a1a1a]" />
+                      {chip.label}
+                    </button>
+                  ))}
+                </div>
               </motion.div>
             </div>
           </motion.div>

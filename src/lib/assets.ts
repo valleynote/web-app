@@ -54,6 +54,8 @@ export const assets = {
   cxPhoto: img("cx-photo.png"),
   clip: img("clip.png"),
   numbersBg: img("numbers-bg.png"),
+  botIcon: img("bot-icon.png"),
+  botWordmark: img("bot-wordmark.png"),
 
   systemLeft: img("system-left.png"),
   systemRight: img("system-right.png"),
@@ -139,6 +141,13 @@ export const assets = {
     img("avatar-8.png"),
   ],
 
+  people: [
+    img("person-1.png"),
+    img("person-2.png"),
+    img("person-3.png"),
+    img("person-4.png"),
+  ],
+
   integrations: {
     shopify: img("integration-shopify.png"),
     gmail: img("integration-gmail.png"),
@@ -183,16 +192,54 @@ export const assets = {
     support: img("icon-support.png"),
   },
 
+  countryFlags: [
+    img("flag-us.png"),
+    img("flag-italy.png"),
+    img("flag-south-africa.png"),
+    img("flag-australia.png"),
+    img("flag-sweden.png"),
+    img("flag-south-korea.png"),
+    img("flag-greece.png"),
+    img("flag-denmark.png"),
+    img("flag-india.png"),
+    img("flag-france.png"),
+    img("flag-uk.png"),
+    img("flag-germany.png"),
+  ],
+
+  /** Flag + label pairs for the global CTA marquee. */
+  countries: [
+    { name: "United States", flag: img("flag-us.png") },
+    { name: "Italy", flag: img("flag-italy.png") },
+    { name: "South Africa", flag: img("flag-south-africa.png") },
+    { name: "Australia", flag: img("flag-australia.png") },
+    { name: "Sweden", flag: img("flag-sweden.png") },
+    { name: "South Korea", flag: img("flag-south-korea.png") },
+    { name: "Greece", flag: img("flag-greece.png") },
+    { name: "Denmark", flag: img("flag-denmark.png") },
+    { name: "India", flag: img("flag-india.png") },
+    { name: "France", flag: img("flag-france.png") },
+    { name: "United Kingdom", flag: img("flag-uk.png") },
+    { name: "Germany", flag: img("flag-germany.png") },
+  ],
+
   floating: {
     pinA: img("floating-pin-a.png"),
     pinB: img("floating-pin-b.png"),
+    note: img("paperclip-left.png"),
+    note2: img("paperclip-right.png"),
     clip: img("floating-clip.png"),
     abstract: img("final-decor.png"),
     abstract2: img("floating-abstract-2.png"),
   },
 
+  paperclipLeft: img("paperclip-left.png"),
+  paperclipRight: img("paperclip-right.png"),
   logoWhite: img("logo-white.png"),
   footerWordmark: img("footer-bg.png"),
   footerPattern: img("footer-pattern.png"),
   footerLine: img("abstract-line.png"),
+
+  creator: img("creator.png"),
+  sandy: img("sandy.png"),
 };

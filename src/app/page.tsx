@@ -12,8 +12,8 @@ const Testimonials = dynamic(() => import("@/components/sections/Testimonials"))
 const FAQ = dynamic(() => import("@/components/sections/FAQ"));
 const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"));
 
-/** Always regenerate HTML so fetch tools never keep old template fingerprints. */
-export const revalidate = 0;
+/** Revalidate often so shared caches / fetch tools pick up asset path changes. */
+export const revalidate = 60;
 
 export default function Home() {
   return (
@@ -21,13 +21,13 @@ export default function Home() {
       <Header />
       <main className="flex flex-1 flex-col gap-14 pb-14 sm:gap-20 sm:pb-20 md:gap-28 md:pb-28">
         <Hero />
-        <AskAI />
         <Features />
+        <AskAI />
         <ContextEngine />
-        <Testimonials />
         <Pricing />
-        <FAQ />
         <CTA />
+        <Testimonials />
+        <FAQ />
         <FinalCTA />
       </main>
       <Footer />

@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { assets } from "@/lib/assets";
 import { IconChevron } from "@/components/Icons";
 
 const faqs = [
@@ -50,15 +52,15 @@ export default function FAQ() {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 md:px-[150px]">
         <div className="mx-auto w-full max-w-[1140px]">
         <div className="mx-auto max-w-[720px] text-center">
-          <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-blue">
-            Help
+          <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-blue">
+            FAQ&apos;s
           </p>
           <h2 className="mt-3 font-inter-tight text-[28px] font-semibold leading-[1.15] tracking-[-0.03em] text-ink sm:text-[32px] md:text-[44px] md:leading-[1.1]">
-            Questions about your notebook
+            Common Questions Answered
           </h2>
           <p className="mx-auto mt-3 max-w-[540px] text-[14px] font-medium leading-relaxed tracking-[-0.02em] text-muted sm:mt-4 sm:text-[16px] md:text-[17px]">
-            How Ask my notes works, writing tools, privacy, pricing, and getting
-            started with ValleyNote.
+            Find answers about ValleyNote features, Ask my notes, AI writing,
+            privacy, pricing, and how to get started
           </p>
         </div>
 
@@ -104,25 +106,56 @@ export default function FAQ() {
             })}
           </ul>
 
-          <div className="flex flex-col gap-4 border-t border-bg-border py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 md:py-7">
-            <p className="text-[14px] font-medium leading-snug tracking-[-0.02em] text-ink sm:text-[15px]">
-              Still unsure?
-              <span className="mt-0.5 block text-muted">
-                Email us from the contact page — we reply to notebook questions.
-              </span>
-            </p>
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:shrink-0 sm:items-center">
+          <div className="flex flex-col gap-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 md:py-7">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="flex shrink-0 -space-x-3">
+                {assets.people.map((src, i) => (
+                  <Image
+                    key={i}
+                    src={src}
+                    alt=""
+                    width={48}
+                    height={48}
+                    className="h-10 w-10 rounded-full border-2 border-bg object-cover sm:h-12 sm:w-12"
+                  />
+                ))}
+              </div>
+              <p className="text-[13px] font-medium leading-[1.35] tracking-[-0.02em] text-ink sm:text-[14px] md:text-[15px]">
+                Talk to our team anytime
+                <span className="mt-0.5 block text-muted">
+                  Just send us a message
+                </span>
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:shrink-0 sm:flex-wrap sm:items-center">
               <Link
                 href="/signup"
-                className="rounded-md border border-solid border-bg-border bg-bg-muted px-4 py-3 text-center text-[14px] font-medium tracking-[-0.02em] text-ink transition hover:border-ink/25 hover:bg-white sm:px-[18px] sm:py-[12px]"
+                className="rounded-full border border-solid border-bg-border bg-bg-muted px-4 py-3 text-center text-[14px] font-medium tracking-[-0.02em] text-ink transition hover:border-ink/25 hover:bg-white sm:px-[18px] sm:py-[12px]"
               >
                 Sign up
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-1.5 rounded-md bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium tracking-[-0.02em] text-white transition hover:bg-ink-soft sm:px-[18px] sm:py-[13px]"
+                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#1a1a1a] px-4 py-3 text-[14px] font-medium tracking-[-0.02em] text-white transition hover:bg-ink-soft sm:px-[18px] sm:py-[13px]"
               >
-                Contact
+                Contact us
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden
+                  className="shrink-0"
+                >
+                  <path
+                    d="M9 5.5 15.5 12 9 18.5"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </Link>
             </div>
           </div>
