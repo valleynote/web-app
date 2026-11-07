@@ -45,10 +45,46 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
+    // Keep HTML fresh for crawlers / AI fetch tools (Next defaults to s-maxage=1y on static pages).
+    const htmlCache = [
+      {
+        key: "Cache-Control",
+        value: "public, max-age=0, s-maxage=60, stale-while-revalidate=86400",
+      },
+    ];
+
     return [
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        source: "/",
+        headers: htmlCache,
+      },
+      {
+        source: "/about",
+        headers: htmlCache,
+      },
+      {
+        source: "/contact",
+        headers: htmlCache,
+      },
+      {
+        source: "/privacy",
+        headers: htmlCache,
+      },
+      {
+        source: "/terms",
+        headers: htmlCache,
+      },
+      {
+        source: "/login",
+        headers: htmlCache,
+      },
+      {
+        source: "/signup",
+        headers: htmlCache,
       },
       {
         source: "/_next/static/:path*",

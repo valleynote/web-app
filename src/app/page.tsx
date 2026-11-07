@@ -12,6 +12,9 @@ const Testimonials = dynamic(() => import("@/components/sections/Testimonials"))
 const FAQ = dynamic(() => import("@/components/sections/FAQ"));
 const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"));
 
+/** Revalidate often so shared caches / fetch tools pick up asset path changes. */
+export const revalidate = 60;
+
 export default function Home() {
   return (
     <div className="marketing flex min-h-full flex-col overflow-x-clip bg-bg">
