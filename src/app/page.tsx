@@ -12,8 +12,8 @@ const Testimonials = dynamic(() => import("@/components/sections/Testimonials"))
 const FAQ = dynamic(() => import("@/components/sections/FAQ"));
 const FinalCTA = dynamic(() => import("@/components/sections/FinalCTA"));
 
-/** Revalidate often so shared caches / fetch tools pick up asset path changes. */
-export const revalidate = 60;
+/** Always regenerate HTML so fetch tools never keep old template fingerprints. */
+export const revalidate = 0;
 
 export default function Home() {
   return (

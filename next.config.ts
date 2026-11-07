@@ -45,12 +45,15 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
-    // Keep HTML fresh for crawlers / AI fetch tools (Next defaults to s-maxage=1y on static pages).
+    // Force HTML revalidation so LLM/fetch caches cannot keep stale template fingerprints.
     const htmlCache = [
       {
         key: "Cache-Control",
-        value: "public, max-age=0, s-maxage=60, stale-while-revalidate=86400",
+        value: "no-store, no-cache, must-revalidate, max-age=0",
       },
+      { key: "Pragma", value: "no-cache" },
+      { key: "CDN-Cache-Control", value: "no-store" },
+      { key: "Cloudflare-CDN-Cache-Control", value: "no-store" },
     ];
 
     return [

@@ -7,7 +7,7 @@ import { assets } from "@/lib/assets";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
-const headlineLines = ["Upgrade Your Notes", "With AI Today"] as const;
+const headlineLines = ["Open your notes.", "Ask anything."] as const;
 
 const headlineContainer = {
   hidden: {},
@@ -46,7 +46,7 @@ function AnimatedHeadline({ className }: { className?: string }) {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.55 }}
-      aria-label="Upgrade Your Notes With AI Today"
+      aria-label="Open your notes. Ask anything."
     >
       {headlineLines.map((line) => (
         <span key={line} className="block">
@@ -189,7 +189,7 @@ export default function FinalCTA() {
 
             <div className="relative z-10 flex h-full min-h-[420px] flex-col items-center justify-center px-4 py-14 text-center sm:min-h-[480px] sm:px-10 sm:py-20 md:min-h-[574px] md:px-16 md:py-24">
               <p className="font-dm-mono text-[12px] font-medium uppercase tracking-[0.08em] text-white sm:text-[13px] md:text-[14px]">
-                Start Today
+                Your notebook, ready
               </p>
 
               <AnimatedHeadline className="mt-2 max-w-[760px] font-switzer text-[28px] font-semibold leading-[1.12] tracking-[-0.03em] text-white sm:text-[44px] sm:leading-[1.1] md:text-[54px]" />
@@ -233,39 +233,6 @@ export default function FinalCTA() {
             </div>
           </div>
 
-          {/* Pins */}
-          <Image
-            src={assets.heroPins.rightAlt}
-            alt=""
-            width={93}
-            height={69}
-            className="pointer-events-none absolute -left-1 top-3.5 z-20 hidden h-[69px] w-[93px] drop-shadow-[0_8px_16px_rgba(0,0,0,0.25)] sm:block"
-          />
-          <Image
-            src={assets.heroPins.rightAlt}
-            alt=""
-            width={93}
-            height={69}
-            className="pointer-events-none absolute -right-1 top-3.5 z-20 hidden h-[69px] w-[93px] scale-x-[-1] drop-shadow-[0_8px_16px_rgba(0,0,0,0.25)] sm:block"
-          />
-
-          {/* Side paperclips */}
-          <Image
-            src={assets.paperclipLeft}
-            alt=""
-            width={108}
-            height={145}
-            className="pointer-events-none absolute left-0 top-[50px] z-20 hidden h-[145px] w-[108px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)] md:block"
-          />
-          <Image
-            src={assets.paperclipRight}
-            alt=""
-            width={108}
-            height={145}
-            className="pointer-events-none absolute right-0 top-[50px] z-20 hidden h-[145px] w-[108px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)] md:block"
-          />
-
-          {/* Hero-style floating badges */}
           <Float
             className="pointer-events-none absolute bottom-6 left-8 z-20 hidden sm:block md:bottom-8 md:left-10"
             y={10}

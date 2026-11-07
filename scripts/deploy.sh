@@ -82,7 +82,10 @@ EOF
 "${SSH[@]}" "$REMOTE" "cp $REMOTE_DIR/.env.production $REMOTE_DIR/.env && chmod 600 $REMOTE_DIR/.env $REMOTE_DIR/.env.production"
 
 echo "==> Building and starting stack (this can take several minutes)"
-"${SSH[@]}" "$REMOTE" "cd $REMOTE_DIR && docker compose -f docker-compose.prod.yml --env-file .env.production up -d --build"
+"${SSH[@]}" "$REMOTE" "cd $REMOTE_DIR && docker compose -f docker-compose.prod.yml --env-file .env.production up -d --build --force-recreate"
+
+echo "==> Reloading Caddy config"
+"${SSH[@]}" "$REMOTE" "cd $REMOTE_DIR && docker compose -f docker-compose.prod.yml exec -T caddy caddy reload --config /etc/caddy/Caddyfile 2>/dev/null || docker compose -f docker-compose.prod.yml restart caddy"
 
 echo "==> Waiting for site"
 for i in $(seq 1 60); do
