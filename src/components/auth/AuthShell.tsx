@@ -48,12 +48,9 @@ export default function AuthShell({
           </Link>
 
           <div className="max-w-[400px]">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/20 px-3 py-1.5 backdrop-blur-[2px]">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-md border border-white/25 bg-black/25 px-3 py-1.5 backdrop-blur-[2px]">
               <span className="font-inter-tight text-[13px] font-medium text-white">
-                AI-powered notebook
-              </span>
-              <span className="rounded-full bg-[#62ff2e] px-2 py-[2px] font-inter-tight text-[11px] font-medium text-[#1a1a1a]">
-                New
+                Notebook with grounded AI
               </span>
             </span>
             <h2 className="font-switzer text-[34px] font-semibold leading-[1.1] tracking-[-0.03em] xl:text-[38px]">

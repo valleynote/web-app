@@ -31,10 +31,10 @@ function AskPreview() {
     <WindowChrome>
       <div className="flex min-h-[220px] flex-col items-center justify-center gap-3 py-2">
         <h4 className="text-center font-inter-tight text-[17px] font-semibold tracking-[-0.03em] text-ink md:text-[18px]">
-          How can I help you today?
+          Search across what you wrote
         </h4>
         <p className="max-w-[220px] text-center font-switzer text-[11.5px] leading-relaxed text-muted">
-          Ask, create, edit, or organize across your notebooks.
+          Pull answers, summaries, and to-dos from your own notebooks.
         </p>
         <div className="mt-1 w-full rounded-[16px] border border-bg-border bg-white px-3 py-2.5 shadow-[0_8px_20px_rgba(26,26,26,0.04)]">
           <p className="font-switzer text-[12.5px] text-muted">

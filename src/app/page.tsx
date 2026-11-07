@@ -21,13 +21,13 @@ export default function Home() {
       <Header />
       <main className="flex flex-1 flex-col gap-14 pb-14 sm:gap-20 sm:pb-20 md:gap-28 md:pb-28">
         <Hero />
-        <Features />
         <AskAI />
+        <Features />
         <ContextEngine />
-        <Pricing />
-        <CTA />
         <Testimonials />
+        <Pricing />
         <FAQ />
+        <CTA />
         <FinalCTA />
       </main>
       <Footer />
