@@ -1,5 +1,3 @@
-import { CONTACT_DETAILS } from "@/lib/contact";
-
 const points = [
   {
     label: "Company",
@@ -37,14 +35,6 @@ export default function AboutMission() {
               <p className="mt-3 max-w-[540px] text-[14px] leading-relaxed text-muted sm:mt-4 sm:text-[15px] md:text-[16px]">
                 ValleyNote is built by Moonlight Valley LLC to help you write,
                 organize, and get answers from your own notes without the noise.
-              </p>
-              <p className="mt-4 text-[14px] font-medium tracking-[-0.02em] text-ink sm:text-[15px]">
-                <a
-                  href={CONTACT_DETAILS.phoneHref}
-                  className="transition hover:text-blue"
-                >
-                  {CONTACT_DETAILS.phone}
-                </a>
               </p>
             </div>
           </div>
