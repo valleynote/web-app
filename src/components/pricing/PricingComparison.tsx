@@ -88,6 +88,11 @@ export default function PricingComparison({
   variant?: "marketing" | "app";
 }) {
   const plans = LANDING_PRICING_CARDS;
+  // Fixed track sizes so scrollWidth matches visible columns on mobile.
+  // (fr + undersized min-width + overflow-hidden was clipping the last plans.)
+  const featureColPx = 200;
+  const planColPx = 156;
+  const tableWidthPx = featureColPx + planColPx * plans.length;
 
   return (
     <div className="mt-12 sm:mt-16 md:mt-20">
@@ -98,86 +103,89 @@ export default function PricingComparison({
         Swipe to compare plans →
       </p>
 
-      <div className="relative mt-6 min-w-0 overflow-x-auto overscroll-x-contain rounded-[16px] [-webkit-overflow-scrolling:touch] sm:mt-8 sm:rounded-[20px]">
-        <div
-          className="w-full min-w-[760px] overflow-hidden rounded-[16px] border border-bg-line bg-bg sm:min-w-[920px] sm:rounded-[20px]"
-          style={{
-            display: "grid",
-            gridTemplateColumns: `minmax(220px,1.2fr) repeat(${plans.length}, minmax(160px,1fr))`,
-          }}
-        >
-          <div className="flex items-end border-b border-r border-bg-line px-5 py-6">
-            <div className="flex items-center gap-2.5">
-              <FeatureSparkle className="h-6 w-6 shrink-0" />
-              <span className="font-inter-tight text-[20px] font-semibold tracking-[-0.02em] text-ink">
-                Features
-              </span>
+      <div className="relative mt-6 min-w-0 sm:mt-8">
+        <div className="overflow-x-auto overscroll-x-contain touch-pan-x [scrollbar-width:thin] [-webkit-overflow-scrolling:touch]">
+          <div
+            className="overflow-hidden rounded-[16px] border border-bg-line bg-bg sm:rounded-[20px]"
+            style={{
+              display: "grid",
+              width: `max(100%, ${tableWidthPx}px)`,
+              gridTemplateColumns: `${featureColPx}px repeat(${plans.length}, minmax(${planColPx}px, 1fr))`,
+            }}
+          >
+            <div className="flex items-end border-b border-r border-bg-line px-4 py-5 sm:px-5 sm:py-6">
+              <div className="flex items-center gap-2.5">
+                <FeatureSparkle className="h-6 w-6 shrink-0" />
+                <span className="font-inter-tight text-[18px] font-semibold tracking-[-0.02em] text-ink sm:text-[20px]">
+                  Features
+                </span>
+              </div>
             </div>
-          </div>
 
-          {plans.map((plan, index) => {
-            const price = displayPrice(plan, billing);
-            const isLast = index === plans.length - 1;
-            return (
-              <div
-                key={plan.id}
-                className={`flex flex-col items-center border-b border-bg-line px-4 py-5 text-center ${
-                  isLast ? "" : "border-r"
-                }`}
-              >
-                <p className="font-inter-tight text-[17px] font-semibold tracking-[-0.02em] text-ink">
-                  {plan.name} Plan
-                </p>
-                <p className="mt-2 font-inter-tight text-[26px] font-semibold tracking-[-0.03em] text-ink md:text-[28px]">
-                  {price}
-                  {!plan.custom ? (
-                    <span className="ml-1 text-[13px] font-medium text-muted">
-                      / per month
-                    </span>
-                  ) : null}
-                </p>
-              </div>
-            );
-          })}
-
-          {PRICING_COMPARISON.map((row, rowIndex) => {
-            const isLastRow = rowIndex === PRICING_COMPARISON.length - 1;
-            const stripe = rowIndex % 2 === 1 ? "bg-bg-soft/50" : "bg-bg";
-            return (
-              <div key={row.feature} className="contents">
+            {plans.map((plan, index) => {
+              const price = displayPrice(plan, billing);
+              const isLast = index === plans.length - 1;
+              return (
                 <div
-                  className={`flex items-center border-r border-bg-line px-5 py-4 ${
-                    isLastRow ? "" : "border-b"
-                  } ${stripe}`}
+                  key={plan.id}
+                  className={`flex flex-col items-center border-b border-bg-line px-3 py-5 text-center sm:px-4 ${
+                    isLast ? "" : "border-r"
+                  }`}
                 >
-                  <span className="text-[14px] font-semibold tracking-[-0.01em] text-ink md:text-[15px]">
-                    {row.feature}
-                  </span>
+                  <p className="font-inter-tight text-[16px] font-semibold tracking-[-0.02em] text-ink sm:text-[17px]">
+                    {plan.name} Plan
+                  </p>
+                  <p className="mt-2 font-inter-tight text-[24px] font-semibold tracking-[-0.03em] text-ink md:text-[28px]">
+                    {price}
+                    {!plan.custom ? (
+                      <span className="ml-1 text-[12px] font-medium text-muted sm:text-[13px]">
+                        / per month
+                      </span>
+                    ) : null}
+                  </p>
                 </div>
-                {plans.map((plan, i) => {
-                  const included = Boolean(
-                    row[plan.id as keyof typeof row],
-                  );
-                  return (
-                    <div
-                      key={`${row.feature}-${plan.id}`}
-                      className={`flex items-center justify-center px-4 py-4 ${
-                        i === plans.length - 1 ? "" : "border-r border-bg-line"
-                      } ${isLastRow ? "" : "border-b border-bg-line"} ${stripe}`}
-                    >
-                      {included ? (
-                        <CheckYes />
-                      ) : (
-                        <span className="text-[14px] font-medium text-muted-3">
-                          --
-                        </span>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
+              );
+            })}
+
+            {PRICING_COMPARISON.map((row, rowIndex) => {
+              const isLastRow = rowIndex === PRICING_COMPARISON.length - 1;
+              const stripe = rowIndex % 2 === 1 ? "bg-bg-soft/50" : "bg-bg";
+              return (
+                <div key={row.feature} className="contents">
+                  <div
+                    className={`flex items-center border-r border-bg-line px-4 py-4 sm:px-5 ${
+                      isLastRow ? "" : "border-b"
+                    } ${stripe}`}
+                  >
+                    <span className="text-[13px] font-semibold tracking-[-0.01em] text-ink sm:text-[14px] md:text-[15px]">
+                      {row.feature}
+                    </span>
+                  </div>
+                  {plans.map((plan, i) => {
+                    const included = Boolean(
+                      row[plan.id as keyof typeof row],
+                    );
+                    return (
+                      <div
+                        key={`${row.feature}-${plan.id}`}
+                        className={`flex items-center justify-center px-3 py-4 sm:px-4 ${
+                          i === plans.length - 1 ? "" : "border-r border-bg-line"
+                        } ${isLastRow ? "" : "border-b border-bg-line"} ${stripe}`}
+                      >
+                        {included ? (
+                          <CheckYes />
+                        ) : (
+                          <span className="text-[14px] font-medium text-muted-3">
+                            --
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
