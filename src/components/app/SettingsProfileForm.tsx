@@ -22,6 +22,7 @@ import {
   X,
 } from "lucide-react";
 import { toast } from "sonner";
+import posthog from "posthog-js";
 import { authClient } from "@/lib/auth-client";
 import {
   confirmDeleteAccountOtpAction,
@@ -248,6 +249,7 @@ export function SettingsProfileForm({
     }
 
     toast.success("Account deleted");
+    posthog.reset();
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {

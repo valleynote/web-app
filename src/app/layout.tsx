@@ -3,6 +3,7 @@ import { Inter, Inter_Tight, DM_Mono } from "next/font/google";
 import AppToaster from "@/components/app/AppToaster";
 import CookieBanner from "@/components/CookieBanner";
 import NavigationProgress from "@/components/NavigationProgress";
+import PostHogAnalytics from "@/components/PostHogAnalytics";
 import "./globals.css";
 
 const inter = Inter({
@@ -51,6 +52,7 @@ export default function RootLayout({
       className={`${inter.variable} ${interTight.variable} ${dmMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-bg font-sans text-ink">
+        <PostHogAnalytics />
         <NavigationProgress />
         {children}
         <CookieBanner />

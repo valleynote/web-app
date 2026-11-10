@@ -15,6 +15,7 @@ import {
   MessageSquareHeart,
 } from "lucide-react";
 import { toast } from "sonner";
+import posthog from "posthog-js";
 import { authClient } from "@/lib/auth-client";
 import { openFeedbackModal } from "@/components/app/FeedbackModal";
 
@@ -306,6 +307,7 @@ export default function AppSidebar({
             type="button"
             onClick={() => {
               toast.success("Signed out");
+              posthog.reset();
               void authClient.signOut({
                 fetchOptions: {
                   onSuccess: () => {
