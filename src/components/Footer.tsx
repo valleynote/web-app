@@ -8,9 +8,7 @@ import { openCookiePreferences } from "@/lib/cookie-consent";
 const homeLinks = [
   { label: "Features", href: "/#features" },
   { label: "Ask AI", href: "/#ask" },
-  { label: "Benefits", href: "/#benefits" },
   { label: "Organize", href: "/#context" },
-  { label: "Integrations", href: "/#integrations" },
   { label: "Pricing", href: "/#pricing" },
   { label: "Testimonials", href: "/#testimonials" },
   { label: "FAQ", href: "/#faq" },
