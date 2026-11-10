@@ -4,6 +4,6 @@ export const CONTACT_DETAILS = {
   phone: "+1 4482035470",
   phoneHref: "tel:+14482035470",
   company: "Moonlight Valley LLC",
-  addressLines: ["494 Back Road #801", "Ocracoke, NC 27960", "United States"],
-  mapsQuery: "494 Back Road #801, Ocracoke, NC 27960",
+  addressLines: ["393 NE 808th St", "Old Town, FL 32630", "United States"],
+  mapsQuery: "393 NE 808th St, Old Town, FL 32630",
 } as const;
