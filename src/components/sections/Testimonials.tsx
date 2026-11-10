@@ -150,6 +150,10 @@ export default function Testimonials() {
           <h2 className="mt-3 font-switzer text-[28px] font-semibold leading-[1.12] tracking-[-0.03em] text-ink-soft sm:text-[36px] md:text-[44px] md:leading-[1.1] md:tracking-[-0.02em]">
             What Our Users say
           </h2>
+          <p className="mx-auto mt-3 max-w-[540px] text-[14px] font-medium leading-relaxed tracking-[-0.02em] text-muted sm:mt-4 sm:text-[16px] md:text-[17px]">
+            Real stories from people who write, search, and think with
+            ValleyNote every day.
+          </p>
         </div>
       </div>
 

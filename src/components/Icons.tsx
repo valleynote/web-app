@@ -46,6 +46,22 @@ export function IconArrowUp({ className = "", size = 20 }: IconProps) {
   );
 }
 
+/** Matches Remix Icon `ri-arrow-right-up-line`. */
+export function IconArrowRightUp({ className = "", size = 20 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden
+    >
+      <path d="M16.0037 9.41421 7.39712 18.0208 5.98291 16.6066 14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
+    </svg>
+  );
+}
+
 export function IconMenu({ className = "", size = 20 }: IconProps) {
   return (
     <svg

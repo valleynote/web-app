@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { assets } from "@/lib/assets";
 import { openCookiePreferences } from "@/lib/cookie-consent";
+import { CONTACT_DETAILS } from "@/lib/contact";
 
 const homeLinks = [
   { label: "Features", href: "/#features" },
@@ -19,8 +20,6 @@ const pageLinks = [
   { label: "Pricing", href: "/#pricing" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
   { label: "Log in", href: "/login" },
   { label: "Sign up", href: "/signup" },
 ];
@@ -73,6 +72,48 @@ export default function Footer() {
             <p className="mt-4 max-w-[280px] text-[14px] font-medium leading-snug tracking-[-0.02em] text-[#d8cdc4] sm:text-[15px]">
               AI-powered notebook for your notes.
             </p>
+
+            <address className="mt-5 not-italic">
+              <ul className="space-y-2 text-[13px] font-medium tracking-[-0.02em] text-[#a39a92] sm:text-[14px]">
+                <li>
+                  <a
+                    href={`mailto:${CONTACT_DETAILS.email}`}
+                    className="transition hover:text-white"
+                  >
+                    {CONTACT_DETAILS.email}
+                  </a>
+                </li>
+                {CONTACT_DETAILS.phone ? (
+                  <li>
+                    <a
+                      href={CONTACT_DETAILS.phoneHref || undefined}
+                      className="transition hover:text-white"
+                    >
+                      {CONTACT_DETAILS.phone}
+                    </a>
+                  </li>
+                ) : null}
+                <li className="max-w-[420px] leading-snug">
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(CONTACT_DETAILS.mapsQuery)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition hover:text-white"
+                  >
+                    <span className="block text-white/80">
+                      {CONTACT_DETAILS.company}
+                    </span>
+                    <span className="block">
+                      {CONTACT_DETAILS.addressLines.slice(0, -1).join(", ")}
+                    </span>
+                    <span className="block">
+                      {CONTACT_DETAILS.addressLines.at(-1)}
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </address>
+
             <Link
               href="/signup"
               className="mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-white px-5 py-3 text-[15px] font-semibold tracking-[-0.02em] text-ink transition hover:bg-white/90 sm:mt-6 sm:w-auto"

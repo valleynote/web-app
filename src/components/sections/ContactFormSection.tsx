@@ -31,15 +31,16 @@ export default function ContactFormSection() {
   }
 
   return (
-    <section className="relative px-4 pb-16 pt-12 font-switzer sm:px-6 md:px-[150px] md:pb-24 md:pt-16">
-      <div className="mx-auto w-full max-w-[560px] auth-form-enter">
-        <p className="font-sans text-[12px] font-light uppercase tracking-[0.22em] text-blue">
-          Contact
+    <section className="scroll-mt-28 font-switzer">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 md:px-[150px]">
+        <div className="mx-auto w-full max-w-[560px] auth-form-enter">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.22em] text-blue">
+          Message
         </p>
-        <h1 className="mt-3 font-inter-tight text-[24px] font-semibold tracking-[-0.03em] text-ink md:text-[28px]">
+        <h1 className="mt-3 font-inter-tight text-[28px] font-semibold leading-[1.15] tracking-[-0.03em] text-ink sm:text-[32px] md:text-[44px] md:leading-[1.12]">
           Send us a message
         </h1>
-        <p className="mt-2 text-[14px] font-medium tracking-[-0.02em] text-muted">
+        <p className="mt-3 max-w-[540px] text-[14px] leading-relaxed text-muted sm:mt-4 sm:text-[15px] md:text-[16px]">
           We usually reply within one business day.
         </p>
 
@@ -136,6 +137,7 @@ export default function ContactFormSection() {
             )}
           </button>
         </form>
+        </div>
       </div>
     </section>
   );
